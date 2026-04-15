@@ -1,5 +1,5 @@
-import 'dart:ffi';
 import 'dart:io';
+import 'package:dart_basics/IceCream.dart';
 
 void main(List<String> arguments) {
   print("Bienvenido a Dart Básicos");
@@ -41,6 +41,13 @@ switch (int.parse(respuesta)) {
 }
 
 void practise(){
+
+/*
++-------------------------------------+
+|           VARIABLES                 |
++-------------------------------------+
+*/
+
 //Variables numéricas
   int edad = 25;
   double altura = 1.71;
@@ -95,8 +102,221 @@ int Modulo= a % b; //Módulo o resto de la división
 
 print("Suma: $suma, resta: $resta, multiplicación: $multiplicacion, división: $division, división entera: $divisionEntera, módulo: $Modulo");
 
+
+
+
+//Condicionales
+ifExamples();
+switchExamples();
+
+//Estructuras de datos
+listExamples();
+setExamples();
+mapExamples();
 }
 
+
+/*
++-------------------------------------+
+|           Condicionales             |
++-------------------------------------+
+*/
+
+void ifExamples() {
+  int userAge = 18;
+
+  if (userAge >= 18) {
+    print("Eres mayor de edad");
+  } else {
+    print("Eres menor de edad");
+  }
+
+  (userAge >= 18) ? print("Eres mayor de edad") : print("Eres menor de edad");
+
+  int experienceYears = 5;
+
+  if (experienceYears > 8) {
+    print("Eres un programador SENIOR");
+  } else if (experienceYears >= 5) {
+    print("Eres un programador MID");
+  } else {
+    print("Eres un programador Junior");
+  }
+
+  print("Introduce el día de la semana:");
+  int numberOfTheWeek = int.parse(stdin.readLineSync()!);
+
+  if (numberOfTheWeek == 1) {
+    print("Lunes");
+  } else if (numberOfTheWeek == 2) {
+    print("Martes");
+  } else if (numberOfTheWeek == 3) {
+    print("Miercoles");
+  } else if (numberOfTheWeek == 4) {
+    print("Jueves");
+  } else if (numberOfTheWeek == 5) {
+    print("Viernes");
+  } else if (numberOfTheWeek == 6) {
+    print("Sábado");
+  } else if (numberOfTheWeek == 7) {
+    print("Domingo");
+  } else {
+    print("El número no es válido");
+  }
+}
+void switchExamples() {
+  print("Introduce el día de la semana:");
+  int numberOfTheWeek = int.parse(stdin.readLineSync()!);
+
+  switch (numberOfTheWeek) {
+    case 1:
+      break;
+    case 2:
+      print("Martes");
+    case 3:
+      print("Miércoles");
+    case 4:
+      print("Jueves");
+    case 5:
+      print("Viernes");
+    case 6:
+      print("Sábado");
+    case 7:
+      print("Domingo");
+    default:
+      print("Número no");
+  }
+}
+
+
+/*
++-------------------------------------+
+|     ESTRUCTURAS DE DATOS            |
++-------------------------------------+
+*/
+
+void listExamples() {
+  List<String> names = ["Jose", "Pepe", "Manolo"];
+  var names2 = ["Alfonso", "Manolo", "Ana"];
+
+  // print(names[9]);
+  // print(names.last);
+  // print(names.first);
+  // print(names.length);
+  // print(names[names.length-1]);
+  // names[2] = "Luis";
+  names.insert(1, "Roberto");
+  // names.add("Ignis");
+  names.addAll(names2);
+  // names.remove("Pepa");
+  // names.removeAt(1);
+  // names.clear();
+  print(names);
+}
+
+void setExamples() {
+  Set<String> names = {"Jose", "Ramon"};
+  Set<String> names2 = {"Jose", "Ramon"};
+  names.add("Jose");
+  names.add("jose");
+  names.add("Bimbo");
+  names.remove("jose");
+  // names.clear();
+  // names.removeAll(names2);
+  bool result = names.contains("Jose");
+  if (names.contains("Jose")) {
+    print("Jose está invitado");
+  } else {
+    print("Jose NO está invitado");
+  }
+  print(names.length);
+
+  List<String> newNames = ["Jose", "Jose", "Juan"];
+  Set<String> newNamesSet = Set.from(newNames);
+  print(newNamesSet);
+}
+
+void mapExamples() {
+  Map<String, int> people = {"Jose": 32, "Luis": 64, "Ashley": 120};
+
+  people["Jose"] = 76;
+  people.addAll({"Tete": 44, "Angel": 22});
+  people["Ignis"] = 76;
+  people.remove("Ignis");
+
+  people.containsKey("Ignis");
+  people.containsValue(32);
+
+  people.length;
+  people.clear();
+
+  print(people.values);
+}
+
+void listLoop() {
+  List<int> numbers = [2, 4, 6, 8, 9, 5];
+
+  // for (var i = 0; i < numbers.length; i++) {
+  //   print("Con el for básico tenemos: ${numbers[i]}");
+  // }
+
+  for (var num2 in numbers) {
+    print("Con el for número 2 tengo $num2");
+  }
+
+  numbers.forEach((item) {
+    print("El numero es $item");
+  });
+
+  numbers.forEach(print);
+}
+
+void setLoop() {
+  Set<int> numbers = {3, 4, 6, 8, 5};
+
+  for (var element in numbers) {
+    print("EL SET: $element");
+  }
+
+  numbers.forEach((item) {
+    print("El numero es $item");
+  });
+
+  numbers.forEach(print);
+}
+
+void mapLoop() {
+  Map<String, int> numbers = {"favNumber": 13, "birthday": 12, "address": 4};
+
+  for (var element in numbers.entries) {
+    print("La clave es ${element.key} y el valor es ${element.value}");
+  }
+
+  numbers.forEach((key, value) {
+    print("La clave es $key y el valor $value");
+  });
+}
+
+void nullability() {
+  String? name = "Jose";
+  name = "";
+  name = null;
+  String example2 = name ?? "Invitado";
+
+  name ??= "Luis";
+
+  IceCream? test = IceCream();
+
+  
+
+
+  if (name != null) {
+    print("Hola $name");
+  }
+
+  int? example = 13;
+  example = null;
+}
 /*
 +-------------------------------------+
 |           EJERCICIOS                |
